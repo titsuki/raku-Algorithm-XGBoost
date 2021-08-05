@@ -40,7 +40,7 @@ method train(Algorithm::XGBoost::DMatrix $dmat, Int $num-iteration --> Algorithm
 
 =head1 NAME
 
-Algorithm::XGBoost - blah blah blah
+Algorithm::XGBoost - A Raku bindings for XGBoost ( https://github.com/dmlc/xgboost ).
 
 =head1 SYNOPSIS
 
