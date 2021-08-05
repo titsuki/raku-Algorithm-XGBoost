@@ -7,7 +7,7 @@
   ],
   "depends": [
   ],
-  "description": "blah blah blah",
+  "description": "A Raku bindings for XGBoost ( https://github.com/dmlc/xgboost ).",
   "license": "Artistic-2.0",
   "name": "Algorithm::XGBoost",
   "perl": "6.d",

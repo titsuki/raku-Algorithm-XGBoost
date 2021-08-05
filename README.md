@@ -3,7 +3,7 @@
 NAME
 ====
 
-Algorithm::XGBoost - blah blah blah
+Algorithm::XGBoost - A Raku bindings for XGBoost ( https://github.com/dmlc/xgboost ).
 
 SYNOPSIS
 ========
