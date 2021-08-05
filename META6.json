@@ -1,0 +1,28 @@
+{
+  "auth": "cpan:TITSUKI",
+  "authors": [
+    "Itsuki Toyota"
+  ],
+  "build-depends": [
+  ],
+  "depends": [
+  ],
+  "description": "blah blah blah",
+  "license": "Artistic-2.0",
+  "name": "Algorithm::XGBoost",
+  "perl": "6.d",
+  "provides": {
+    "Algorithm::XGBoost": "lib/Algorithm/XGBoost.rakumod",
+    "Algorithm::XGBoost::Booster": "lib/Algorithm/XGBoost/Booster.rakumod",
+    "Algorithm::XGBoost::DMatrix": "lib/Algorithm/XGBoost/DMatrix.rakumod",
+    "Algorithm::XGBoost::Model": "lib/Algorithm/XGBoost/Model.rakumod"
+  },
+  "resources": [
+  ],
+  "source-url": "https://github.com/titsuki/raku-Algorithm-XGBoost.git",
+  "tags": [
+  ],
+  "test-depends": [
+  ],
+  "version": "0.0.1"
+}

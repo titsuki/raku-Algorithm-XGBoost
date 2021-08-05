@@ -1,0 +1,21 @@
+use Test;
+use Algorithm::XGBoost;
+
+dies-ok { Algorithm::XGBoost.new; }
+dies-ok { Algorithm::XGBoost::Model.new; }
+dies-ok { Algorithm::XGBoost::DMatrix.new; }
+lives-ok { Algorithm::XGBoost.version; }
+
+subtest {
+    my $dmat = Algorithm::XGBoost::DMatrix.from-file("misc/agaricus.txt.test");
+    is $dmat.num-row, 1611;
+    is $dmat.num-col, 127;
+    my $model = Algorithm::XGBoost.train($dmat, 10);
+    is $model.num-feature, 127;
+
+    my @test[2;2] = [[0e0,0e0],[0e0,1e0]];
+    my $test = Algorithm::XGBoost::DMatrix.from-matrix(@test);
+    is $model.predict($test), (0.9858198761940002, 0.9858198761940002);
+}, "Make sure SYNOPSIS works fine";
+
+done-testing;
