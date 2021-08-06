@@ -7,7 +7,7 @@ dies-ok { Algorithm::XGBoost::DMatrix.new; }
 lives-ok { Algorithm::XGBoost.version; }
 
 subtest {
-    my $dmat = Algorithm::XGBoost::DMatrix.from-file("misc/agaricus.txt.test");
+    my $dmat = Algorithm::XGBoost::DMatrix.from-file("{$*PROGRAM.parent.absolute}/../misc/agaricus.txt.test");
     is $dmat.num-row, 1611;
     is $dmat.num-col, 127;
     my $model = Algorithm::XGBoost.train($dmat, 10);
