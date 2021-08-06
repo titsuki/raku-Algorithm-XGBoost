@@ -43,8 +43,13 @@ class Algorithm::XGBoost::CustomBuilder:ver<0.0.1> is Distribution::Builder::Mak
         my $extractor   = Zef::Extract.new(:backends(@extract-backends));
         my $extract-dir = $extractor.extract(Candidate.new(:uri($archive-file)), $*CWD);
         chdir("xgboost");
-        shell("cmake .");
+        when self!is-osx { shell("brew install libomp && cmake .") }
+        when self!is-win { shell("cmake -G\"Visual Studio 14 2015 Win64\"") }
+        when self!is-linux { shell("cmake .") }
         shell("make");
         chdir($goback);
     }
+    method !is-osx { shell("uname", :out).out.slurp.trim.lc eq "darwin" }
+    method !is-win { $*DISTRO.is-win }
+    method !is-linux { so (self!is-osx, self!is-win).none }
 }
