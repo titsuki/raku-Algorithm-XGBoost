@@ -20,4 +20,18 @@ subtest {
     is $model.predict($test), (0.9858561754226685, 0.9858561754226685);
 }, "Make sure SYNOPSIS works fine";
 
+subtest {
+    my @train[3;2] = [[0e0,0e0],[0e0,1e0],[1e0,0e0]];
+    my @y = [1e0, 0e0, 1e0];
+    my $dmat = Algorithm::XGBoost::DMatrix.from-matrix(@train, @y);
+    is $dmat.num-row, 3;
+    is $dmat.num-col, 2;
+    my $model = Algorithm::XGBoost.train($dmat, 10);
+    is $model.num-feature, 2;
+
+    my @test[2;2] = [[0e0,0e0],[0e0,1e0]];
+    my $test = Algorithm::XGBoost::DMatrix.from-matrix(@test);
+    is $model.predict($test), (0.9463129639625549, 0.09843720495700836)
+}, "Given a label list @y, Then DMatrix.from-matrix should set the labels";
+
 done-testing;
