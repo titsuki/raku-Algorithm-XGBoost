@@ -2,7 +2,7 @@ use NativeCall;
 
 unit class Algorithm::XGBoost::DMatrix:ver<0.0.1>:auth<cpan:TITSUKI> is repr('CPointer');
 
-my constant $library = %?RESOURCES<libraries/xgboost>.Str; $*ERR.print: $library.subst(/(.+)/, ""); # Force evaluation
+my constant $library = BEGIN { %?RESOURCES<libraries/xgboost>.Str };
 my sub XGDMatrixCreateFromFile(Str, int32, Algorithm::XGBoost::DMatrix is rw --> int32) is native($library) { * }
 my sub XGDMatrixNumRow(Algorithm::XGBoost::DMatrix, ulong is rw --> int32) is native($library) { * }
 my sub XGDMatrixNumCol(Algorithm::XGBoost::DMatrix, ulong is rw --> int32) is native($library) { * }
