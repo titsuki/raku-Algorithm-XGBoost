@@ -1,3 +1,5 @@
 .precomp/
 /Algorithm-XGBoost-*
 /resources/libraries/
+/src/xgboost
+/src/xgboost.tar.gz

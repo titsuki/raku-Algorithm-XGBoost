@@ -2,5 +2,10 @@ Revision history for Algorithm-XGBoost
 
 {{$NEXT}}
 
+0.0.2  2021-08-08T01:36:51+09:00
+    - Use agaricus.txt.train instead of agaricus.txt.test [#5]
+    - Add CustomBuilder [#4]
+    - Add missing auth field [4470c97]
+
 0.0.1  2021-08-06T03:10:23+09:00
     - Initial version

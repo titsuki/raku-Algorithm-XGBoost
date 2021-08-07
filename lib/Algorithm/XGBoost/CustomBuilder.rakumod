@@ -4,8 +4,9 @@ use Zef::Fetch;
 use Zef::Extract;
 use Distribution::Builder::MakeFromJSON;
 
-class Algorithm::XGBoost::CustomBuilder:ver<0.0.1>:auth<cpan:TITSUKI> is Distribution::Builder::MakeFromJSON {
+class Algorithm::XGBoost::CustomBuilder:ver<0.0.2>:auth<cpan:TITSUKI> is Distribution::Builder::MakeFromJSON {
     method build(IO() $work-dir = $*CWD) {
+        my $goback = ENTER $*CWD;
         my $workdir = ~$work-dir;
         if $*DISTRO.is-win {
             die "Sorry, this binding doesn't support windows";
@@ -22,9 +23,9 @@ class Algorithm::XGBoost::CustomBuilder:ver<0.0.1>:auth<cpan:TITSUKI> is Distrib
             run 'rm', '-f', "$workdir/resources/libraries/%vars<xgboost>";
         }
         run 'ln', '-s', "$workdir/src/xgboost/lib/%vars<xgboost>", "$workdir/resources/libraries/%vars<xgboost>";
+        LEAVE chdir($goback);
     }
     method !install-xgboost($workdir) {
-        my $goback = $*CWD;
         my $srcdir = "$workdir/src";
         my %vars = get-vars($workdir);
 
@@ -48,7 +49,6 @@ class Algorithm::XGBoost::CustomBuilder:ver<0.0.1>:auth<cpan:TITSUKI> is Distrib
         chdir("xgboost");
         when self!is-osx { shell("brew install libomp && cmake . && make") }
         when self!is-linux { shell("cmake . && make") }
-        chdir($goback);
     }
     method !is-osx(--> Bool) { shell("uname", :out).out.slurp.trim.lc eq "darwin" }
     method !is-linux(--> Bool) { so (self!is-osx, $*DISTRO.is-win).none }
