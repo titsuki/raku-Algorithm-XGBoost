@@ -18,7 +18,7 @@ class Algorithm::XGBoost::CustomBuilder:ver<0.0.1> is Distribution::Builder::Mak
         if "$workdir/resources/libraries/%vars<xgboost>".IO.f {
             run 'rm', '-f', "$workdir/resources/libraries/%vars<xgboost>";
         }
-        run 'ln', '-s', "$workdir/src/xgboost/lib/%vars<xgboost>", "$workdir/resources/libraries/%vars<xgboost>";
+        run 'cp', "$workdir/src/xgboost/lib/%vars<xgboost>", "$workdir/resources/libraries/%vars<xgboost>";
     }
     method !install-xgboost($workdir) {
         my $goback = $*CWD;
