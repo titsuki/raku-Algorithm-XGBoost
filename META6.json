@@ -4,7 +4,11 @@
     "Itsuki Toyota"
   ],
   "build-depends": [
+    "Algorithm::XGBoost::CustomBuilder",
+    "LibraryMake",
+    "Distribution::Builder::MakeFromJSON"
   ],
+  "builder": "Algorithm::XGBoost::CustomBuilder",
   "depends": [
   ],
   "description": "A Raku bindings for XGBoost ( https://github.com/dmlc/xgboost ).",
@@ -15,9 +19,11 @@
     "Algorithm::XGBoost": "lib/Algorithm/XGBoost.rakumod",
     "Algorithm::XGBoost::Booster": "lib/Algorithm/XGBoost/Booster.rakumod",
     "Algorithm::XGBoost::DMatrix": "lib/Algorithm/XGBoost/DMatrix.rakumod",
-    "Algorithm::XGBoost::Model": "lib/Algorithm/XGBoost/Model.rakumod"
+    "Algorithm::XGBoost::Model": "lib/Algorithm/XGBoost/Model.rakumod",
+    "Algorithm::XGBoost::CustomBuilder": "lib/Algorithm/XGBoost/CustomBuilder.rakumod"
   },
   "resources": [
+    "libraries/xgboost"
   ],
   "source-url": "https://github.com/titsuki/raku-Algorithm-XGBoost.git",
   "tags": [
