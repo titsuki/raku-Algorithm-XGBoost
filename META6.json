@@ -18,9 +18,9 @@
   "provides": {
     "Algorithm::XGBoost": "lib/Algorithm/XGBoost.rakumod",
     "Algorithm::XGBoost::Booster": "lib/Algorithm/XGBoost/Booster.rakumod",
+    "Algorithm::XGBoost::CustomBuilder": "lib/Algorithm/XGBoost/CustomBuilder.rakumod",
     "Algorithm::XGBoost::DMatrix": "lib/Algorithm/XGBoost/DMatrix.rakumod",
-    "Algorithm::XGBoost::Model": "lib/Algorithm/XGBoost/Model.rakumod",
-    "Algorithm::XGBoost::CustomBuilder": "lib/Algorithm/XGBoost/CustomBuilder.rakumod"
+    "Algorithm::XGBoost::Model": "lib/Algorithm/XGBoost/Model.rakumod"
   },
   "resources": [
     "libraries/xgboost"

@@ -54,21 +54,6 @@ Defined as:
 
 Returns the libxgboost version.
 
-How to get libxgboost ?
-=======================
-
-Sorry for inconvenience, current implementation requires manual install:
-
-```bash
-$ git clone https://github.com/dmlc/xgboost
-$ cd xgboost
-$ cmake .
-$ make
-$ cd..
-$ mkdir -p raku-Algorithm-XGBoost/resources/libraries/
-$ cp xgboost/lib/libxgboost.so raku-Algorithm-XGBoost/resources/libraries/
-```
-
 AUTHOR
 ======
 

@@ -90,22 +90,6 @@ Defined as:
 
 Returns the libxgboost version.
 
-=head1 How to get libxgboost ?
-
-Sorry for inconvenience, current implementation requires manual install:
-
-=begin code :lang<bash>
-
-$ git clone https://github.com/dmlc/xgboost
-$ cd xgboost
-$ cmake .
-$ make
-$ cd..
-$ mkdir -p raku-Algorithm-XGBoost/resources/libraries/
-$ cp xgboost/lib/libxgboost.so raku-Algorithm-XGBoost/resources/libraries/
-
-=end code
-
 =head1 AUTHOR
 
 Itsuki Toyota <titsuki@cpan.org>
