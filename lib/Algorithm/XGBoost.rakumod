@@ -52,15 +52,15 @@ use Algorithm::XGBoost::DMatrix;
 use Algorithm::XGBoost::Model;
 
 # agaricus.txt.test is here: https://github.com/dmlc/xgboost/tree/master/demo/data
-my $dmat = Algorithm::XGBoost::DMatrix.from-file("agaricus.txt.test");
-say $dmat.num-row; # 1611
+my $dmat = Algorithm::XGBoost::DMatrix.from-file("agaricus.txt.train");
+say $dmat.num-row; # 6513
 say $dmat.num-col; # 127
 my $model = Algorithm::XGBoost.train($dmat, 10);
 $model.num-feature.say; # 127
 
 my @test[2;2] = [[0e0,0e0],[0e0,1e0]];
 my $test = Algorithm::XGBoost::DMatrix.from-matrix(@test);
-say $model.predict($test); # (0.9858198761940002 0.9858198761940002)
+say $model.predict($test); # (0.9858561754226685 0.9858561754226685)
 
 =end code
 
