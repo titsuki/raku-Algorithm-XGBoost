@@ -18,7 +18,7 @@ method from-file(::?CLASS:U: Str $path --> ::?CLASS:D) {
     nativecast(Algorithm::XGBoost::DMatrix, $h);
 }
 
-method from-matrix(::?CLASS:U: @x where { $_.shape ~~ ($,$) }, @y?, Num :$missing = 1e0 --> ::?CLASS:D) {
+method from-matrix(::?CLASS:U: @x where { $_.shape ~~ ($,$) }, @y?, Num :$missing = NaN --> ::?CLASS:D) {
     my $h = Pointer.new;
     my $data = CArray[num32].new(@x.flat);
     my ($nr, $nc) = @x.shape;
