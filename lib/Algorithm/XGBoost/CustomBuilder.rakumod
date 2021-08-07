@@ -7,6 +7,9 @@ use Distribution::Builder::MakeFromJSON;
 class Algorithm::XGBoost::CustomBuilder:ver<0.0.1> is Distribution::Builder::MakeFromJSON {
     method build(IO() $work-dir = $*CWD) {
         my $workdir = ~$work-dir;
+        if $*DISTRO.is-win {
+            die "Sorry, this binding doesn't support windows";
+        }
 	my $srcdir = "$workdir/src";
 	my %vars = get-vars($workdir);
 	%vars<xgboost> = $*VM.platform-library-name('xgboost'.IO);
@@ -18,7 +21,7 @@ class Algorithm::XGBoost::CustomBuilder:ver<0.0.1> is Distribution::Builder::Mak
         if "$workdir/resources/libraries/%vars<xgboost>".IO.f {
             run 'rm', '-f', "$workdir/resources/libraries/%vars<xgboost>";
         }
-        run 'cp', "$workdir/src/xgboost/lib/%vars<xgboost>", "$workdir/resources/libraries/%vars<xgboost>";
+        run 'ln', '-s', "$workdir/src/xgboost/lib/%vars<xgboost>", "$workdir/resources/libraries/%vars<xgboost>";
     }
     method !install-xgboost($workdir) {
         my $goback = $*CWD;
@@ -44,11 +47,9 @@ class Algorithm::XGBoost::CustomBuilder:ver<0.0.1> is Distribution::Builder::Mak
         my $extract-dir = $extractor.extract(Candidate.new(:uri($archive-file)), $*CWD);
         chdir("xgboost");
         when self!is-osx { shell("brew install libomp && cmake . && make") }
-        when self!is-win { shell("cmake -G\"Visual Studio 14 2015 Win64\" && make") }
         when self!is-linux { shell("cmake . && make") }
         chdir($goback);
     }
     method !is-osx(--> Bool) { shell("uname", :out).out.slurp.trim.lc eq "darwin" }
-    method !is-win(--> Bool) { $*DISTRO.is-win }
-    method !is-linux(--> Bool) { so (self!is-osx, self!is-win).none }
+    method !is-linux(--> Bool) { so (self!is-osx, $*DISTRO.is-win).none }
 }
