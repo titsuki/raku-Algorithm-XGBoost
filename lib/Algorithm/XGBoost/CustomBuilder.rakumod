@@ -6,7 +6,7 @@ use Distribution::Builder::MakeFromJSON;
 
 class Algorithm::XGBoost::CustomBuilder:ver<0.0.2>:auth<cpan:TITSUKI> is Distribution::Builder::MakeFromJSON {
     method build(IO() $work-dir = $*CWD) {
-        my $goback = ENTER $*CWD;
+        my $goback = $*CWD;
         my $workdir = ~$work-dir;
         if $*DISTRO.is-win {
             die "Sorry, this binding doesn't support windows";
@@ -23,7 +23,7 @@ class Algorithm::XGBoost::CustomBuilder:ver<0.0.2>:auth<cpan:TITSUKI> is Distrib
             run 'rm', '-f', "$workdir/resources/libraries/%vars<xgboost>";
         }
         run 'ln', '-s', "$workdir/src/xgboost/lib/%vars<xgboost>", "$workdir/resources/libraries/%vars<xgboost>";
-        LEAVE chdir($goback);
+        chdir($goback);
     }
     method !install-xgboost($workdir) {
         my $srcdir = "$workdir/src";
