@@ -2,6 +2,10 @@ Revision history for Algorithm-XGBoost
 
 {{$NEXT}}
 
+0.0.3  2021-08-08T03:05:46+09:00
+    - Remove phasers [#7]
+    - Make DMatrix.from-matrix enable to set labels [#6]
+
 0.0.2  2021-08-08T01:36:51+09:00
     - Use agaricus.txt.train instead of agaricus.txt.test [#5]
     - Add CustomBuilder [#4]
