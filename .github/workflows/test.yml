@@ -29,6 +29,6 @@ jobs:
       - name: Install App::Prove6
         run: zef install --/test App::Prove6
       - name: Build xgboost
-        run: RAKULIB=lib zef build -v .
+        run: zef build -v .
       - name: Run Tests
-        run: RAKULIB=lib prove6 -v -l t
+        run: prove6 -v -l t
