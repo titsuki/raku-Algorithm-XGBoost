@@ -1,5 +1,7 @@
 use Test;
 use Algorithm::XGBoost;
+use Algorithm::XGBoost::DMatrix;
+use Algorithm::XGBoost::Model;
 
 dies-ok { Algorithm::XGBoost.new; }
 dies-ok { Algorithm::XGBoost::Model.new; }
