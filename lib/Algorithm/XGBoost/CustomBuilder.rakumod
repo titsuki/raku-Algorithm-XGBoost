@@ -49,7 +49,7 @@ class Algorithm::XGBoost::CustomBuilder:ver<0.0.1> is Distribution::Builder::Mak
         shell("make");
         chdir($goback);
     }
-    method !is-osx { shell("uname", :out).out.slurp.trim.lc eq "darwin" }
-    method !is-win { $*DISTRO.is-win }
-    method !is-linux { so (self!is-osx, self!is-win).none }
+    method !is-osx(--> Bool) { shell("uname", :out).out.slurp.trim.lc eq "darwin" }
+    method !is-win(--> Bool) { $*DISTRO.is-win }
+    method !is-linux(--> Bool) { so (self!is-osx, self!is-win).none }
 }
