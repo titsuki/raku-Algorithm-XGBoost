@@ -54,6 +54,19 @@ Defined as:
 
 Returns the libxgboost version.
 
+### global-config
+
+Defined as:
+
+    multi method global-config(Str $json-str)
+    multi method global-config(--> Str)
+
+Sets/Gets the global parameters: verbosity and use_rmm.
+
+  * `verbosity` The verbosity of printing messages. Valid values of 0 (silent), 1 (warning), 2 (info), and 3 (debug).
+
+  * `use_rmm` Whether to use RAPIDS Memory Manager (RMM) to allocate GPU memory. This option is only applicable when XGBoost is built (compiled) with the RMM plugin enabled. Valid values are true and false.
+
 AUTHOR
 ======
 
