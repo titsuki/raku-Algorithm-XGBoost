@@ -39,6 +39,6 @@ subtest {
     Algorithm::XGBoost.global-config(q[{"verbosity": 2}]);
     my $json = Algorithm::XGBoost.global-config;
     is from-json($json)<verbosity>, 2;
-}, ".global-config should set/get verbosity=2"
+}, ".global-config should set/get verbosity=2";
 
 done-testing;
