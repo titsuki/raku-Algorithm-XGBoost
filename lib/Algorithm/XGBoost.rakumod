@@ -10,7 +10,7 @@ my sub XGBoostVersion(int32 is rw, int32 is rw, int32 is rw) is native($library)
 my sub XGBLastError is native($library) { * }
 my sub XGBRegisterLogCallBack(&callback (Str --> void)) is native($library) { * }
 my sub XGBSetGlobalConfig(Str --> int32) is native($library) { * }
-my sub XGBGetGlobalConfig(Str is rw --> int32) is native($library) { * }
+my sub XGBGetGlobalConfig(Pointer[Str] is rw --> int32) is native($library) { * }
 
 method new {!!!}
 
@@ -34,6 +34,16 @@ method train(Algorithm::XGBoost::DMatrix $dmat, Int $num-iteration --> Algorithm
         XGBoosterUpdateOneIter($booster, $iter, $dmat);
     }
     Algorithm::XGBoost::Model.create($booster);
+}
+
+multi method global-config(Str $json-str) {
+    XGBSetGlobalConfig($json-str);
+}
+
+multi method global-config(--> Str) {
+    my $json-str = Pointer.new;
+    XGBGetGlobalConfig($json-str);
+    nativecast(Str, $json-str);
 }
 
 =begin pod
