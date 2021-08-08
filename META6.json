@@ -7,7 +7,7 @@
     "Algorithm::XGBoost::CustomBuilder",
     "LibraryMake",
     "Distribution::Builder::MakeFromJSON",
-    "Json::Tiny"  
+    "JSON::Tiny"
   ],
   "builder": "Algorithm::XGBoost::CustomBuilder",
   "depends": [
