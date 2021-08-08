@@ -2,7 +2,7 @@ use NativeCall;
 use Algorithm::XGBoost::DMatrix;
 use Algorithm::XGBoost::Booster;
 
-unit class Algorithm::XGBoost::Model:ver<0.0.3>:auth<cpan:TITSUKI> is repr('CPointer');
+unit class Algorithm::XGBoost::Model:ver<0.0.4>:auth<cpan:TITSUKI> is repr('CPointer');
 
 my constant $library = %?RESOURCES<libraries/xgboost>.Str;
 my sub XGBoosterGetNumFeature(Algorithm::XGBoost::Model, ulong is rw --> int32) is native($library) { * }
