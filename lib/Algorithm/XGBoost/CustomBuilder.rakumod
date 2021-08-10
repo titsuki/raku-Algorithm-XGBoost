@@ -4,7 +4,7 @@ use Zef::Fetch;
 use Zef::Extract;
 use Distribution::Builder::MakeFromJSON;
 
-class Algorithm::XGBoost::CustomBuilder:ver<0.0.4>:auth<cpan:TITSUKI> is Distribution::Builder::MakeFromJSON {
+class Algorithm::XGBoost::CustomBuilder:ver<0.0.5>:auth<cpan:TITSUKI> is Distribution::Builder::MakeFromJSON {
     method build(IO() $work-dir = $*CWD) {
         my $goback = $*CWD;
         my $workdir = ~$work-dir;

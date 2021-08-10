@@ -3,7 +3,7 @@ use Algorithm::XGBoost::Booster;
 use Algorithm::XGBoost::DMatrix;
 use Algorithm::XGBoost::Model;
 
-unit class Algorithm::XGBoost:ver<0.0.4>:auth<cpan:TITSUKI>;
+unit class Algorithm::XGBoost:ver<0.0.5>:auth<cpan:TITSUKI>;
 
 my constant $library = %?RESOURCES<libraries/xgboost>.Str;
 my sub XGBoostVersion(int32 is rw, int32 is rw, int32 is rw) is native($library) { * }

@@ -2,6 +2,9 @@ Revision history for Algorithm-XGBoost
 
 {{$NEXT}}
 
+0.0.5  2021-08-10T23:34:56+09:00
+    - Make XGBoost.train enable to set parameter
+
 0.0.4  2021-08-08T21:16:22+09:00
     - Make missing option keyword argument [#9]
     - Use NaN instead of 1e0 as the default value of missing [#11]
