@@ -88,13 +88,15 @@ Algorithm::XGBoost is a Raku bindings for XGBoost ( https://github.com/dmlc/xgbo
 
 Defined as:
 
-       method train(Algorithm::XGBoost::DMatrix $dmat, Int $num-iteration --> Algorithm::XGBoost::Model)
+       method train(Algorithm::XGBoost::DMatrix $dmat, Int $num-iteration, %param --> Algorithm::XGBoost::Model)
 
 Trains a XGBoost model.
 
 =item C<$dmat> The instance of Algorithm::XGBoost::DMatrix.
 
 =item C<$num-iteration> The number of iterations for training.
+
+=item C<%param> The parameter for training.
 
 =head3 version
 
