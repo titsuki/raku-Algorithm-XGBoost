@@ -24,11 +24,15 @@ method version(--> Version) {
 
 my sub XGBoosterCreate(Algorithm::XGBoost::DMatrix is rw, ulong, Algorithm::XGBoost::Booster is rw --> int32) is native($library) { * }
 my sub XGBoosterUpdateOneIter(Algorithm::XGBoost::Booster, int32, Algorithm::XGBoost::DMatrix --> int32) is native($library) { * }
+my sub XGBoosterSetParam(Algorithm::XGBoost::Booster, Str, Str --> int32) is native($library) { * }
 
-method train(Algorithm::XGBoost::DMatrix $dmat, Int $num-iteration --> Algorithm::XGBoost::Model) {
+method train(Algorithm::XGBoost::DMatrix $dmat, Int $num-iteration, %param? --> Algorithm::XGBoost::Model) {
     my $h = Pointer.new;
     XGBoosterCreate($dmat, 1, $h);
     my $booster = nativecast(Algorithm::XGBoost::Booster, $h);
+    for %param {
+        XGBoosterSetParam($booster, .key.Str, .value.Str);
+    }
     
     for ^$num-iteration -> $iter {
         XGBoosterUpdateOneIter($booster, $iter, $dmat);
