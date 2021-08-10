@@ -38,13 +38,15 @@ METHODS
 
 Defined as:
 
-    method train(Algorithm::XGBoost::DMatrix $dmat, Int $num-iteration --> Algorithm::XGBoost::Model)
+    method train(Algorithm::XGBoost::DMatrix $dmat, Int $num-iteration, %param --> Algorithm::XGBoost::Model)
 
 Trains a XGBoost model.
 
   * `$dmat` The instance of Algorithm::XGBoost::DMatrix.
 
   * `$num-iteration` The number of iterations for training.
+
+  * `%param` The parameter for training.
 
 ### version
 
