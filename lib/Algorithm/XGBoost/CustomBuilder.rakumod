@@ -47,7 +47,12 @@ class Algorithm::XGBoost::CustomBuilder:ver<0.0.5>:auth<cpan:TITSUKI> is Distrib
         my $archive-file-with-cwd = $*CWD.add($archive-file);
         my $extract-dir = $extractor.extract(Candidate.new(:uri($archive-file-with-cwd)), $*CWD);
         chdir("xgboost");
-        when self!is-osx { shell("brew install libomp && cmake . && make") }
+        when self!is-osx {
+            my $fh = open :w, "./cmake/xgboost-config.cmake.in";
+            $fh.say: "../../misc/xgboost-config.cmake.in".IO.slurp;
+            $fh.close;
+            shell("brew install libomp && cmake . && make")
+        }
         when self!is-linux { shell("cmake . && make") }
     }
     method !is-osx(--> Bool) { shell("uname", :out).out.slurp.trim.lc eq "darwin" }
