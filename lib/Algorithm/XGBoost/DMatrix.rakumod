@@ -1,6 +1,6 @@
 use NativeCall;
 
-unit class Algorithm::XGBoost::DMatrix:ver<0.0.5>:auth<zef:titsuki> is repr('CPointer');
+unit class Algorithm::XGBoost::DMatrix:ver<0.0.6>:auth<zef:titsuki> is repr('CPointer');
 
 my constant $library = %?RESOURCES<libraries/xgboost>.Str;
 my sub XGDMatrixCreateFromFile(Str, int32, Algorithm::XGBoost::DMatrix is rw --> int32) is native($library) { * }

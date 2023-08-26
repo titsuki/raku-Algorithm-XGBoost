@@ -3,7 +3,7 @@ use Algorithm::XGBoost::Booster;
 use Algorithm::XGBoost::DMatrix;
 use Algorithm::XGBoost::Model;
 
-unit class Algorithm::XGBoost:ver<0.0.5>:auth<zef:titsuki>;
+unit class Algorithm::XGBoost:ver<0.0.6>:auth<zef:titsuki>;
 
 my constant $library = %?RESOURCES<libraries/xgboost>.Str;
 my sub XGBoostVersion(int32 is rw, int32 is rw, int32 is rw) is native($library) { * }

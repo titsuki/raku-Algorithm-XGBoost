@@ -2,6 +2,12 @@ Revision history for Algorithm-XGBoost
 
 {{$NEXT}}
 
+0.0.6  2023-08-27T03:15:21+09:00
+    - Fix type discrepancy of num-row/num-col methods [#17]
+    - Use absolute path when extracting xgboost.tar.gz file [#18]
+    - Use xgboost v1.7.6 [#20]
+    - Upload to zef intead of cpan [#21]
+
 0.0.5  2021-08-10T23:34:56+09:00
     - Make XGBoost.train enable to set parameter
 
