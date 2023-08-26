@@ -39,13 +39,13 @@ class Algorithm::XGBoost::CustomBuilder:ver<0.0.5>:auth<cpan:TITSUKI> is Distrib
         my $archive-file = "xgboost.tar.gz".IO.e
         ?? "xgboost.tar.gz"
         !! $fetcher.fetch(Candidate.new(:$uri), "xgboost.tar.gz");
-
         my @extract-backends = [
             { module => "Zef::Service::Shell::tar" },
             { module => "Zef::Service::Shell::p5tar" },
         ];
         my $extractor   = Zef::Extract.new(:backends(@extract-backends));
-        my $extract-dir = $extractor.extract(Candidate.new(:uri($archive-file)), $*CWD);
+        my $archive-file-with-cwd = $*CWD.add($archive-file);
+        my $extract-dir = $extractor.extract(Candidate.new(:uri($archive-file-with-cwd)), $*CWD);
         chdir("xgboost");
         when self!is-osx { shell("brew install libomp && cmake . && make") }
         when self!is-linux { shell("cmake . && make") }
