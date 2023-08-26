@@ -28,13 +28,13 @@ method from-matrix(::?CLASS:U: @x where { $_.shape ~~ ($,$) }, @y?, Num :$missin
 }
 
 method num-row(--> Int) {
-    my int32 $nr;
+    my uint64 $nr;
     XGDMatrixNumRow(self, $nr);
     $nr;
 }
 
 method num-col(--> Int) {
-    my int32 $nc;
+    my uint64 $nc;
     XGDMatrixNumCol(self, $nc);
     $nc;
 }
