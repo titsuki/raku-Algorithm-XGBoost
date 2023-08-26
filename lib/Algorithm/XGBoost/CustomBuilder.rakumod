@@ -35,7 +35,7 @@ class Algorithm::XGBoost::CustomBuilder:ver<0.0.5>:auth<cpan:TITSUKI> is Distrib
             { module => "Zef::Service::Shell::curl" },
         ];
         my $fetcher      = Zef::Fetch.new(:backends(@fetch-backends));
-        my $uri          = 'https://github.com/dmlc/xgboost/releases/download/v1.4.2/xgboost.tar.gz';
+        my $uri          = 'https://github.com/dmlc/xgboost/releases/download/v1.7.6/xgboost.tar.gz';
         my $archive-file = "xgboost.tar.gz".IO.e
         ?? "xgboost.tar.gz"
         !! $fetcher.fetch(Candidate.new(:$uri), "xgboost.tar.gz");
@@ -47,7 +47,12 @@ class Algorithm::XGBoost::CustomBuilder:ver<0.0.5>:auth<cpan:TITSUKI> is Distrib
         my $archive-file-with-cwd = $*CWD.add($archive-file);
         my $extract-dir = $extractor.extract(Candidate.new(:uri($archive-file-with-cwd)), $*CWD);
         chdir("xgboost");
-        when self!is-osx { shell("brew install libomp && cmake . && make") }
+        when self!is-osx {
+            my $fh = open :w, "./cmake/xgboost-config.cmake.in";
+            $fh.say: "../../misc/xgboost-config.cmake.in".IO.slurp;
+            $fh.close;
+            shell("brew install libomp && cmake . && make")
+        }
         when self!is-linux { shell("cmake . && make") }
     }
     method !is-osx(--> Bool) { shell("uname", :out).out.slurp.trim.lc eq "darwin" }
