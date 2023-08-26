@@ -35,7 +35,7 @@ class Algorithm::XGBoost::CustomBuilder:ver<0.0.5>:auth<cpan:TITSUKI> is Distrib
             { module => "Zef::Service::Shell::curl" },
         ];
         my $fetcher      = Zef::Fetch.new(:backends(@fetch-backends));
-        my $uri          = 'https://github.com/dmlc/xgboost/releases/download/v1.4.2/xgboost.tar.gz';
+        my $uri          = 'https://github.com/dmlc/xgboost/releases/download/v1.7.6/xgboost.tar.gz';
         my $archive-file = "xgboost.tar.gz".IO.e
         ?? "xgboost.tar.gz"
         !! $fetcher.fetch(Candidate.new(:$uri), "xgboost.tar.gz");
