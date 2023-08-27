@@ -72,7 +72,7 @@ say $dmat.num-col; # 127
 my $model = Algorithm::XGBoost.train($dmat, 10);
 $model.num-feature.say; # 127
 
-my @test[2;2] = [[0e0,0e0],[0e0,1e0]];
+my @test = [[0e0,0e0],[0e0,1e0]];
 my $test = Algorithm::XGBoost::DMatrix.from-matrix(@test);
 say $model.predict($test); # (0.9858561754226685 0.9858561754226685)
 
